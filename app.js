@@ -111,7 +111,14 @@ function techniqueLink(name) {
   return `<a class="technique-link" target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=${query}">Technikvideo</a>`;
 }
 
+function hideReport() {
+  const element = $('#report');
+  element.hidden = true;
+  element.innerHTML = '';
+}
+
 function renderTraining() {
+  hideReport();
   $('#weeks').innerHTML = `
     <button data-week="${Math.max(1, S.week - 1)}" aria-label="Vorherige Trainingswoche">Zurück</button>
     <button class="active" id="weekJump">Woche ${S.week}</button>
@@ -238,7 +245,9 @@ function renderStats() {
 
 function setView(nextView) {
   const views = ['home', 'train', 'history', 'settings'];
+  const previousView = view;
   view = views.includes(nextView) ? nextView : 'home';
+  if (previousView !== view) hideReport();
   views.forEach(name => $('#' + name).hidden = name !== view);
   $$('.bottom-nav [data-view]').forEach(button => {
     const active = button.dataset.view === view;
@@ -390,6 +399,16 @@ document.addEventListener('click', event => {
   } else if (button.dataset.report) {
     const entry = S.sessions.find(session => String(session.end) === button.dataset.report);
     if (entry) {
+      if (S.running && S.running.key !== entry.key) {
+        alert('Beende zuerst das laufende Training.');
+        return;
+      }
+      const [week, day] = String(entry.key).split('|').map(Number);
+      if (!Number.isSafeInteger(week) || week < 1 || !D[day]) return;
+      S.week = week;
+      S.day = day;
+      saveState();
+      renderTraining();
       setView('train');
       showReport(entry);
     }
@@ -429,7 +448,7 @@ $('#session').onclick = () => {
     announce('Training abgeschlossen. Starke Arbeit.', {frequency: 920, duration: .28, vibrate: [90, 60, 90]});
     releaseWakeLockIfIdle();
   } else {
-    $('#report').hidden = true;
+    hideReport();
     S.running = {key: currentPrefix(), start: Date.now(), before: Object.keys(S.log).filter(key => S.log[key]?.d)};
     saveState();
     announce(`Training gestartet. ${D[S.day].n}.`, {frequency: 720, vibrate: 45});
@@ -534,6 +553,8 @@ function showReport(entry) {
   element.innerHTML = `
     <p class="eyebrow">POST GAME REPORT</p>
     <h2>Training abgeschlossen</h2>
+    <p class="muted">Woche ${escapeHtml(String(entry.key).split('|')[0])} · ${escapeHtml(D[String(entry.key).split('|')[1]]?.n || 'Training')}</p>
+    <button id="closeReport" type="button">Bericht schließen</button>
     <strong id="kcal"></strong>
     <p class="muted" id="range"></p>
     <div class="report-stats">
@@ -553,6 +574,7 @@ function showReport(entry) {
     <textarea id="yazio" readonly aria-label="Kopierbarer YAZIO-Bericht"></textarea>
     <div class="button-row"><button class="primary" id="copyReport">Für YAZIO kopieren</button><button id="copyKcal">Nur kcal kopieren</button></div>
     <p id="copyStatus" role="status"></p>`;
+  $('#closeReport').onclick = hideReport;
   $('#met').value = String(report.met);
 
   const update = () => {
