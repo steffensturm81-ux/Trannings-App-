@@ -1,30 +1,157 @@
-<!doctype html><html lang="de"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="GRIDIRON"><meta name="theme-color" content="#080808"><title>GRIDIRON | RB Performance</title>
-<meta property="og:type" content="website">
-<meta property="og:locale" content="de_DE">
-<meta property="og:title" content="GRIDIRON | Football-Training">
-<meta property="og:description" content="Off-Season-Trainingsplan für Running Backs">
-<meta property="og:url" content="https://steffensturm81-ux.github.io/Trannings-App-/">
-<meta property="og:image" content="https://steffensturm81-ux.github.io/Trannings-App-/gridiron-preview.jpg">
-<meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:width" content="640">
-<meta property="og:image:height" content="640">
-<meta property="og:image:alt" content="Goldener American Football auf dunklem Hintergrund">
-<style>
-:root{color-scheme:dark;--bg:#080808;--panel:#151515;--text:#faf7ef;--muted:#bdb7aa;--line:#443b27;--accent:#e6b83f;--green:#e6b83f}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.45 system-ui,sans-serif}main{max-width:720px;margin:auto;padding:calc(18px + env(safe-area-inset-top)) 16px calc(100px + env(safe-area-inset-bottom))}h1{font-size:36px;line-height:1;margin:8px 0}h2{font-size:24px}h3{margin:0;font-size:19px}small,.muted{color:var(--muted)}button,input{font:inherit}button{cursor:pointer;border:1px solid var(--line);background:var(--panel);color:var(--text);border-radius:12px;min-height:44px;padding:9px 12px}button.active,.primary{background:var(--accent);color:#080808;border-color:var(--accent);font-weight:800}.eyebrow{color:var(--accent);font-size:12px;letter-spacing:3px;font-weight:800}.flex{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.spread{justify-content:space-between}.tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:10px 0}.panel,article{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px;margin:12px 0}.progress{height:8px;background:var(--line);border-radius:8px;overflow:hidden}.progress i{display:block;background:var(--green);height:100%}.set{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;align-items:center;margin:8px 0}.set input:not([type=checkbox]),input.rm{width:100%;min-width:0;background:var(--bg);border:1px solid var(--line);color:var(--text);border-radius:8px;padding:10px;text-align:center}input[type=checkbox]{width:24px;height:24px;accent-color:var(--green);vertical-align:middle}.warm{display:flex;align-items:center;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}a{color:var(--accent)}.dock{position:fixed;bottom:0;left:0;right:0;background:var(--panel);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));z-index:3}.dock>div{max-width:688px;margin:auto}.clock{font-size:22px;font-weight:800;font-variant-numeric:tabular-nums}.tag{font-size:12px;color:var(--accent);font-weight:700}summary{cursor:pointer}button:focus-visible,input:focus-visible{outline:2px solid var(--accent)}.stat{font-size:28px;font-weight:800}.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.grid .panel{margin:0}.bar{height:10px;background:var(--accent);border-radius:5px}.done{border-color:var(--green)}[hidden]{display:none!important}
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0c0d0f">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="GRIDIRON">
+  <meta name="description" content="GRIDIRON ist dein interaktiver Off-Season-Trainingsplan für Running Backs.">
+  <title>GRIDIRON | Football-Training</title>
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:title" content="GRIDIRON | Football-Training">
+  <meta property="og:description" content="Off-Season-Trainingsplan für Running Backs">
+  <meta property="og:url" content="https://steffensturm81-ux.github.io/Trannings-App-/">
+  <meta property="og:image" content="https://steffensturm81-ux.github.io/Trannings-App-/gridiron-preview.jpg">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="640">
+  <meta property="og:image:height" content="640">
+  <meta property="og:image:alt" content="Goldener American Football auf dunklem Hintergrund">
+  <link rel="manifest" href="app.webmanifest">
+  <link rel="icon" href="gridiron-preview.jpg">
+  <link rel="apple-touch-icon" href="gridiron-preview.jpg">
+  <link rel="stylesheet" href="style.css">
+  <script src="data.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <button class="brand" data-view="home" aria-label="GRIDIRON Startseite öffnen">
+      <img src="gridiron-preview.jpg" width="46" height="46" alt="">
+      <span><strong>GRIDIRON</strong><small>RB Performance</small></span>
+    </button>
+    <span class="week-chip">Woche <b id="headerWeek">1</b></span>
+  </header>
 
-body{background:radial-gradient(ellipse at 50% 0%,#29200c 0%,#080808 380px);background-attachment:fixed}h1{font-weight:950;font-style:italic;letter-spacing:-1.5px;color:var(--accent);text-shadow:0 2px 18px #e6b83222}.eyebrow{letter-spacing:2px}article{border-left:3px solid var(--accent)}.primary,button.active{background:linear-gradient(135deg,#f8d77b,#d3a127);border-color:#e6b83f}.dock{background:#101010}.progress i,.bar{background:linear-gradient(90deg,#b78920,#f5d16a)}.done{border-color:var(--accent)}
-.exerciseFig{display:block;width:100%;max-width:300px;height:130px;margin:8px auto;fill:none;stroke-linecap:round;stroke-linejoin:round;background:#101010;border-radius:10px}.warm span{flex:1}.warm .exerciseFig{height:100px;margin:4px 0}  .report{border:1px solid #e6b83f}.report strong{font-size:36px;color:#e6b83f}.report textarea{width:100%;background:#080808;color:#faf7ef;border:1px solid #443b27;border-radius:10px;padding:12px;font:inherit;min-height:100px}.report select{background:#151515;color:#fff;padding:10px;border:1px solid #443b27;border-radius:8px;width:100%}.report input{max-width:120px} </style></head><body><main><div class="eyebrow">PADERBORN DOLPHINS / PERFORMANCE</div><h1>🏈 GRIDIRON</h1><p class="muted">Strength · Power · Athleticism · RB Performance · V4.0</p><div class="flex" id="nav"><button data-view="train" class="active">Training</button><button data-view="history">Historie & Stats</button><button data-view="settings">Einstellungen</button></div><section id="train"><div class="tabs" id="weeks"></div><p id="hint" class="muted"></p><div class="tabs" id="days"></div><div class="panel"><div class="flex spread"><b id="dayname"></b><span id="progressText"></span></div><div class="progress"><i id="progressBar"></i></div><div class="flex spread" style="margin-top:12px"><button id="session" class="primary">Training starten</button><span id="sessionTime" class="clock">0:00</span></div></div><div id="report" hidden class="panel report"></div><div id="work"></div><button id="reset">Diesen Tag zurücksetzen</button></section><section id="history" hidden></section><section id="settings" hidden><div class="panel"><h2>Körpergewicht</h2><label>Aktuelles Gewicht (kg) <input id="bodyMass" type="number" min="30" max="300" step="0.1" value="102"></label><p class="muted">Startwert 102 kg, bitte aktualisieren.</p><h2>Referenzgewichte</h2><p class="muted">Optional: bekanntes 1RM eintragen, kein Maximaltest nötig.</p><div id="maxes"></div></div><div class="panel"><h2>Datensicherung</h2><p>Deine Daten bleiben lokal in diesem Browser. Exportiere sie für einen Gerätewechsel.</p><button id="export">Backup exportieren</button> <button id="import">Backup importieren</button><input type="file" id="file" accept="application/json,.json" hidden><p id="storageStatus" role="status"></p></div></section></main><div class="dock"><div class="flex spread"><div><small id="restLabel">Satzpause</small><div class="clock" id="restTime">0:00</div></div><button id="restStop">Stopp</button><button id="restStart" class="primary">90 s Pause</button></div></div><script>
-'use strict';const K='rb-plan-v1', $=s=>document.querySelector(s), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const lower=[['Glute Bridge','2×12'],['Band Walk','2×10 pro Seite'],['Leg Swings','2×10 pro Bein'],['Walking Lunge mit Rotation','2×6 pro Bein'],['A-Skips','2×15 m']],upper=[['Arm Circles','2×10 je Richtung'],['Band Pull-Apart','2×15'],['Scapula Push-Up','2×10'],['Liegestütze','2×8'],['Brustwirbel-Rotation','2×8 pro Seite']];
-// Stable exercise indices preserve original logs. Replacements use separate keys.
-const D=[{t:'Mo',n:'Lower Strength',e:[['Box Jump',5,'4',90,'','Leise landen, jede Wiederholung einzeln.'],['Beinpresse',4,'8',120,'','Kontrolliert absenken, Becken bleibt an der Lehne.'],['Romanian Deadlift',3,'8',90,'','Hüfte nach hinten, Rücken neutral.'],['Bulgarian Split Squat',3,'8 pro Bein',90,'','Kurzhanteln seitlich halten, kontrolliert und nur schmerzfrei trainieren.'],['Beinbeuger Maschine',3,'10',90,'','Langsam ablassen, Hüfte stabil.',1],['Standing Calf Raise',3,'12',60],['Plank',3,'40 Sek',60]]},{t:'Di',n:'Upper Strength',e:[['Medizinball-Brustwurf',3,'5',90],['Bankdrücken',4,'5',150,'bp'],['Klimmzüge',4,'6–8',120],['Schrägbankdrücken mit Kurzhanteln',3,'8',90],['Vorgebeugtes Rudern',3,'8',90],['Face Pull',3,'15',60],['Bizepscurl und Trizepsdrücken (Superset)',2,'12',60]]},{t:'Do',n:'Upper Power',e:[['Push Press',4,'5',120,'pp','Kurzer Dip, explosiver Beinantrieb.'],['Dips oder Schrägbankdrücken',3,'8',90],['Einarm-Kurzhantelrudern',3,'10 pro Seite',90],['Latzug',3,'10',90],['Seitheben',3,'15',60],['Nackentraining',2,'15',60,'','Leichter kontrollierter Widerstand, keine ruckartigen Bewegungen.'],['Farmer’s Carry',3,'30 m',60]]},{t:'Sa',n:'Lower Power',note:'Nach Platztraining Sprünge und Würfe nur bei frischen Beinen. Bei Müdigkeit reduzieren oder auslassen.',e:[['Box Jump',3,'3',90],['Medizinball Scoop Toss',3,'5',120,'','Explosiv aus der Hüfte nach vorne/oben werfen, freie Wurfzone.',1],['Broad Jump',3,'3',90],['Lateral Bound',3,'5 pro Seite',90],['Hip Thrust',4,'8',90],['Walking Lunge',3,'10 pro Bein',90],['Sled Push',5,'15 m',90],['Copenhagen Plank',3,'20 Sek pro Seite',60],['Pallof Press',3,'10 pro Seite',60]]}];
-const hints=['Einstieg · Kraftübungen RPE 7 (3 Wiederholungen Reserve)','Aufbau · Kraftübungen RPE 8 (2 Wiederholungen Reserve)','Peak · Kraftübungen maximal RPE 9 (1 Wiederholung Reserve)','Deload · weniger Sätze, leichter trainieren'];let S={week:1,day:0,log:{},mx:{},dur:{},sessions:[]};function valid(o){return o&&typeof o==='object'&&o.log&&typeof o.log==='object'&&!Array.isArray(o.log)}function load(o){if(!valid(o))throw Error('Ungültiges Backup');S={...S,...o};S.week=Math.max(1,Math.floor(Number(S.week)||1));S.day=Math.min(3,Math.max(0,Number(S.day)||0));S.mx=S.mx||{};S.dur=S.dur||{};S.sessions=Array.isArray(S.sessions)?S.sessions:[];if(S.t&&!S.running)S.running={key:S.week+'|'+S.day,start:S.t};delete S.t}try{const raw=localStorage.getItem(K);if(raw)load(JSON.parse(raw))}catch(e){alert('Alte Daten konnten nicht geladen werden.')}function save(){try{localStorage.setItem(K,JSON.stringify(S));$('#storageStatus').textContent='Lokal gespeichert.'}catch(e){$('#storageStatus').textContent='Speichern fehlgeschlagen. Bitte Backup exportieren.'}}const num=x=>Number(String(x??'').replace(',','.')),round=x=>Math.round(x/2.5)*2.5,rd=k=>S.log[k]||{},prefix=()=>S.week+'|'+S.day, key=(w,d,i,s)=>`${w}|${d}|${D[d].e[i][6]?'v2-':''}${i}|${s}`, fmt=x=>{x=Math.max(0,Math.floor(x));return Math.floor(x/60)+':'+String(x%60).padStart(2,'0')};let restEnd=0,restSecs=90,view='train';
-function target(x,i,s){for(let w=S.week-1;w>=1;w--){const p=rd(key(w,S.day,i,s)),v=num(p.w);if(v>0&&p.d)return S.deload?.[S.week]?Math.round(v*.8*2)/2:v}const m=num(S.mx[x[4]]);return x[4]&&m>0?round(m*(S.deload?.[S.week]?.valueOf()? .6:.725)):''}const ART={"Box Jump": ["crouch", "stand", "box"], "Beinpresse": ["pressBent", "pressStraight", "press"], "Romanian Deadlift": ["stand", "hinge", "weight"], "Bulgarian Split Squat": ["split", "splitLow", "bench"], "Beinbeuger Maschine": ["prone", "curl", "bench"], "Standing Calf Raise": ["stand", "toe", ""], "Plank": ["plank", "plank", ""], "Medizinball-Brustwurf": ["chest", "reach", "ball"], "Bankdrücken": ["benchBent", "benchUp", "bench weight"], "Klimmzüge": ["hang", "pull", "bar"], "Schrägbankdrücken mit Kurzhanteln": ["inclineBent", "inclineUp", "bench weight"], "Vorgebeugtes Rudern": ["hinge", "row", "weight"], "Face Pull": ["reach", "face", "cable"], "Bizepscurl und Trizepsdrücken (Superset)": ["stand", "bicep", "weight"], "Push Press": ["chest", "overhead", "weight"], "Dips oder Schrägbankdrücken": ["dipUp", "dipLow", "dip"], "Einarm-Kurzhantelrudern": ["hinge", "row", "weight"], "Latzug": ["seatedUp", "seatedPull", "bar"], "Seitheben": ["stand", "reach", "weight"], "Nackentraining": ["stand", "neck", ""], "Farmer’s Carry": ["stand", "stride", "weight"], "Medizinball Scoop Toss": ["crouch", "overhead", "ball"], "Broad Jump": ["crouch", "stride", ""], "Lateral Bound": ["splitLow", "stride", ""], "Hip Thrust": ["bridgeLow", "bridge", "bench weight"], "Walking Lunge": ["stride", "splitLow", "weight"], "Sled Push": ["sled", "sled2", "sled"], "Copenhagen Plank": ["side", "side", "bench"], "Pallof Press": ["chest", "reach", "cable"], "Glute Bridge": ["bridgeLow", "bridge", ""], "Band Walk": ["crouch", "split", ""], "Leg Swings": ["stand", "stride", ""], "Walking Lunge mit Rotation": ["stride", "splitLow", ""], "A-Skips": ["stand", "skip", ""], "Arm Circles": ["reach", "overhead", ""], "Band Pull-Apart": ["reach", "face", ""], "Scapula Push-Up": ["plank", "plank", ""], "Liegestütze": ["plank", "pushLow", ""], "Brustwirbel-Rotation": ["splitLow", "reach", ""]};const POSES={"stand": [50, 15, 50, 29, 50, 57, 50, 76, 50, 96, 53, 43, 53, 58], "crouch": [55, 35, 49, 48, 37, 67, 62, 78, 50, 96, 39, 60, 30, 72], "hinge": [76, 39, 65, 47, 36, 61, 43, 79, 40, 96, 67, 63, 68, 82], "row": [76, 39, 65, 47, 36, 61, 43, 79, 40, 96, 45, 48, 53, 61], "split": [49, 15, 49, 29, 49, 57, 64, 76, 69, 96, 50, 44, 50, 59, 31, 77, 20, 83], "splitLow": [49, 30, 49, 44, 49, 70, 70, 73, 70, 96, 50, 58, 50, 73, 32, 91, 17, 83], "toe": [50, 10, 50, 24, 50, 52, 50, 71, 50, 90, 53, 38, 53, 53], "stride": [50, 15, 50, 29, 50, 57, 69, 72, 78, 96, 35, 40, 30, 55, 32, 77, 20, 96], "skip": [50, 15, 50, 29, 50, 57, 73, 58, 73, 79, 35, 40, 30, 55, 48, 76, 48, 96], "chest": [50, 15, 50, 29, 50, 57, 50, 76, 50, 96, 62, 45, 70, 30], "reach": [50, 15, 50, 29, 50, 57, 50, 76, 50, 96, 68, 29, 85, 29], "face": [50, 15, 50, 29, 50, 57, 50, 76, 50, 96, 68, 42, 58, 23], "bicep": [50, 15, 50, 29, 50, 57, 50, 76, 50, 96, 53, 46, 65, 30], "overhead": [50, 19, 50, 33, 50, 60, 50, 78, 50, 96, 50, 19, 50, 3], "neck": [58, 17, 50, 29, 50, 57, 50, 76, 50, 96, 65, 35, 61, 17], "plank": [83, 58, 72, 66, 43, 75, 25, 84, 10, 96, 72, 82, 72, 96], "pushLow": [83, 77, 72, 84, 43, 87, 25, 91, 10, 96, 57, 78, 72, 96], "side": [83, 48, 72, 58, 43, 69, 25, 72, 10, 72, 72, 80, 72, 96, 25, 88, 10, 96], "bridgeLow": [15, 86, 27, 89, 51, 90, 70, 65, 84, 96, 40, 94, 53, 94], "bridge": [15, 86, 27, 89, 54, 64, 73, 64, 84, 96, 40, 84, 53, 70], "prone": [15, 55, 27, 62, 52, 62, 73, 62, 94, 62, 25, 76, 12, 76], "curl": [15, 55, 27, 62, 52, 62, 73, 62, 76, 39, 25, 76, 12, 76], "benchBent": [15, 55, 28, 62, 56, 62, 75, 73, 75, 96, 42, 77, 42, 50], "benchUp": [15, 55, 28, 62, 56, 62, 75, 73, 75, 96, 29, 43, 29, 25], "inclineBent": [24, 25, 34, 38, 55, 65, 75, 74, 75, 96, 51, 48, 51, 25], "inclineUp": [24, 25, 34, 38, 55, 65, 75, 74, 75, 96, 34, 20, 34, 3], "hang": [50, 37, 50, 50, 50, 72, 50, 84, 50, 96, 50, 28, 50, 8], "pull": [50, 10, 50, 23, 50, 50, 50, 68, 50, 86, 67, 32, 67, 8], "dipUp": [50, 15, 50, 29, 50, 57, 55, 76, 40, 86, 52, 44, 52, 60], "dipLow": [50, 32, 50, 46, 50, 73, 55, 86, 40, 96, 35, 48, 52, 60], "seatedUp": [50, 25, 50, 39, 50, 65, 72, 65, 72, 96, 50, 22, 50, 5], "seatedPull": [50, 25, 50, 39, 50, 65, 72, 65, 72, 96, 68, 51, 68, 32], "pressBent": [15, 67, 26, 75, 43, 85, 62, 57, 79, 62, 30, 88, 43, 88], "pressStraight": [15, 67, 26, 75, 43, 85, 62, 63, 81, 40, 30, 88, 43, 88], "sled": [73, 29, 62, 40, 39, 62, 27, 79, 12, 96, 78, 42, 92, 45, 53, 77, 48, 96], "sled2": [73, 29, 62, 40, 39, 62, 60, 75, 65, 96, 78, 42, 92, 45, 27, 79, 12, 96]};function fig(n){const a=ART[n];if(!a)return '';return `<svg class="exerciseFig" viewBox="0 0 240 122" role="img" aria-label="${esc(n)}: schematische Start- und Endposition">${a.slice(0,2).map((name,i)=>{const p=POSES[name],x=i*120+10,pt=j=>[p[j*2]+x,p[j*2+1]+14],line=(j,k)=>`<line x1="${pt(j)[0]}" y1="${pt(j)[1]}" x2="${pt(k)[0]}" y2="${pt(k)[1]}"/>`,gear=a[2];let g='';if(gear.includes('box'))g+=`<rect x="${x+70}" y="91" width="25" height="19"/>`;if(gear.includes('bench'))g+=`<path d="M${x+10} 83h44v27 M${x+15} 83v27"/>`;if(gear.includes('bar'))g+=`<path d="M${x+20} 22h60"/>`;if(gear.includes('dip'))g+=`<path d="M${x+30} 74h45v36"/>`;if(gear.includes('press'))g+=`<path d="M${x+70} 45l25 22 M${x+8} 75l35 25"/>`;if(gear.includes('sled'))g+=`<path d="M${x+92} 59v51h-25"/>`;if(gear.includes('weight')||gear.includes('ball'))g+=`<circle cx="${pt(6)[0]}" cy="${pt(6)[1]}" r="5" fill="#e6b83f"/>`;return `<g><text x="${x+50}" y="10" text-anchor="middle" fill="#bdb7aa" stroke="none" font-size="9">${i?'ENDE':'START'}</text><g stroke="#74664a" stroke-width="2">${g}<path d="M${x} 110h100"/></g><g stroke="#f4d47d" stroke-width="3.5">${line(1,2)+line(2,3)+line(3,4)+line(1,5)+line(5,6)+(p.length>14?line(2,7)+line(7,8):'')}<circle cx="${pt(0)[0]}" cy="${pt(0)[1]}" r="6"/></g></g>`}).join('')}<path d="M116 58h8l-3 -3m3 3l-3 3" stroke="#e6b83f"/></svg>`}function video(n){return `<a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/results?search_query=${encodeURIComponent(n+' exercise technique')}">Technik ↗</a>`}function render(){ $('#weeks').innerHTML=`<button data-week="${Math.max(1,S.week-1)}" aria-label="Vorherige Woche">‹</button><button class="active" style="grid-column:span 2" id="weekJump">Woche ${S.week}</button><button data-week="${S.week+1}" aria-label="Nächste Woche">›</button><button id="deload" style="grid-column:span 4" class="${S.deload?.[S.week]?'active':''}">${S.deload?.[S.week]?'Deload aktiv':'Deload optional aktivieren'}</button>`;$('#days').innerHTML=D.map((d,i)=>`<button data-day="${i}" class="${i===S.day?'active':''}">${d.t}</button>`).join('');const d=D[S.day];$('#hint').textContent=S.deload?.[S.week]?"Entlastung: weniger Sätze und Gewicht.":"Fortlaufendes Training · 2–3 Wiederholungen Reserve; steigern, wenn alle Sätze sauber gelingen.";$('#dayname').textContent=d.n;let h=d.note?`<p class="panel">${d.note}</p>`:'';h+='<h2>01 / Warm-up</h2><div class="panel">';(S.day===0||S.day===3?lower:upper).forEach((x,i)=>{const k=prefix()+'|w'+i;h+=`<label class="warm"><input type="checkbox" data-k="${k}" data-f="d" ${rd(k).d?'checked':''}><span>${x[0]}<br><small>${x[1]}</small>${fig(x[0])}</span></label>`});h+='</div><h2>02 / Workout</h2>';d.e.forEach((x,i)=>{const n=S.deload?.[S.week]?Math.min(2,x[1]):x[1];h+=`<article><div class="tag">ÜBUNG ${String(i+1).padStart(2,'0')}</div><div class="flex spread"><h3>${x[0]}</h3>${video(x[0])}</div><p class="muted">${n} × ${x[2]} · ${x[3]} s Pause</p>${fig(x[0])}${x[5]?`<p>${x[5]}</p>`:''}<div class="set muted"><small>Satz</small><small>Gewicht (kg)</small><small>Wdh / Zeit / m</small></div>`;for(let s=0;s<n;s++){const k=key(S.week,S.day,i,s),v=rd(k),t=target(x,i,s);h+=`<div class="set"><label><input type="checkbox" data-k="${k}" data-f="d" data-rest="${x[3]}" ${v.d?'checked':''}> ${s+1}</label><input aria-label="Gewicht Satz ${s+1}" inputmode="decimal" data-k="${k}" data-f="w" value="${esc(v.w)}" placeholder="${t||'kg'}"><input aria-label="Leistung Satz ${s+1}" inputmode="decimal" data-k="${k}" data-f="r" value="${esc(v.r)}" placeholder="${esc(x[2])}"></div>`}h+=`<button data-pause="${x[3]}">Pause ${x[3]} s</button></article>`});$('#work').innerHTML=h;progress();tick()}
-function progress(){const a=[...document.querySelectorAll('#work input[type=checkbox]')],n=a.filter(x=>x.checked).length;$('#progressText').textContent=n+'/'+a.length;$('#progressBar').style.width=(a.length?n/a.length*100:0)+'%';document.querySelectorAll('article').forEach(a=>{const c=[...a.querySelectorAll('[type=checkbox]')];a.classList.toggle('done',c.length>0&&c.every(x=>x.checked))})}
-function stats(){let h='<h2>Trainingsübersicht</h2>';const count=Object.values(S.log).filter(v=>v&&v.d).length;h+=`<div class="grid"><div class="panel"><div class="stat">${count}</div><small>Erledigte Einträge inkl. Warm-up</small></div><div class="panel"><div class="stat">${S.sessions.length}</div><small>Beendete Timer-Sessions</small></div></div><h2>Gewichtsentwicklung</h2>`;D.forEach((d,di)=>d.e.forEach((x,i)=>{const weeks=[...new Set(Object.keys(S.log).map(k=>Number(k.split("|")[0])).filter(w=>w>0))].sort((a,b)=>a-b);const vals=weeks.map(w=>Math.max(0,...Array.from({length:x[1]},(_,s)=>{const v=rd(key(w,di,i,s));return v.d?num(v.w)||0:0})));const max=Math.max(...vals);if(max)h+=`<div class="panel"><b>${x[0]} · ${d.t}</b>${vals.map((v,j)=>`<div class="flex"><small>W${weeks[j]}</small><div style="flex:1"><div class="bar" style="width:${100*v/max}%"></div></div><small>${v?v+' kg':'–'}</small></div>`).join('')}</div>`}));h+='<h2>Historie</h2>';if(!S.sessions.length)h+='<p class="muted">Noch keine neu beendeten Sessions.</p>';S.sessions.slice().reverse().forEach(s=>{const [w,d]=String(s.key).split('|');h+=`<div class="panel"><b>Woche ${esc(w)} · ${esc(D[d]?.n||'Training')}</b><br><small>${esc(new Date(s.end).toLocaleString('de-DE'))} · ${fmt(s.seconds)}</small>${s.report?`<br><button data-report="${s.end}">Workout Report / YAZIO</button>`:""}</div>`});h+='<h3>Frühere Zeitmessungen</h3>';Object.entries(S.dur).forEach(([k,v])=>{const [w,d]=k.split('|');h+=`<p>W${esc(w)} · ${esc(D[d]?.n||'Training')} · ${fmt(v)}</p>`});$('#history').innerHTML=h}
-function startRest(s){restSecs=s;restEnd=Date.now()+s*1000;tick()}function tick(){const r=S.running;$('#session').textContent=r?'Training beenden':'Training starten';$('#sessionTime').textContent=r?fmt((Date.now()-r.start)/1000):fmt(S.dur[prefix()]||0);$('#restTime').textContent=fmt(Math.ceil((restEnd-Date.now())/1000));$('#restLabel').textContent=restEnd&&restEnd<=Date.now()?'Pause beendet': 'Satzpause';$('#restStart').textContent=restSecs+' s Pause'}setInterval(tick,250);
-document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.id==="weekJump"){const w=Number(prompt("Zu welcher Trainingswoche wechseln?",S.week));if(Number.isSafeInteger(w)&&w>0&&w<=10000){S.week=w;save();render()}}else if(b.id==="deload"){S.deload=S.deload||{};S.deload[S.week]=!S.deload[S.week];save();render()}else if(b.dataset.view){view=b.dataset.view;['train','history','settings'].forEach(v=>$('#'+v).hidden=v!==view);document.querySelectorAll('[data-view]').forEach(x=>x.classList.toggle('active',x===b));if(view==='history')stats()}else if(b.dataset.week||b.dataset.day!==undefined){if(b.dataset.week)S.week=+b.dataset.week;else S.day=+b.dataset.day;save();render()}else if(b.dataset.pause)startRest(+b.dataset.pause)});document.addEventListener('input',e=>{const t=e.target;if(t.dataset.m){S.mx[t.dataset.m]=t.value;save()}else if(t.dataset.k){const v=S.log[t.dataset.k]||(S.log[t.dataset.k]={});if(t.dataset.f==="d"&&t.checked)v.completedAt=Date.now();v[t.dataset.f]=t.type==='checkbox'?t.checked:t.value;save();progress();if(t.checked&&t.dataset.rest)startRest(+t.dataset.rest)}});$('#session').onclick=()=>{if(S.running){const r=S.running,end=Date.now(),seconds=Math.round((end-r.start)/1000);S.dur[r.key]=seconds;const entry={key:r.key,start:r.start,end,seconds,report:measure(r,seconds)};S.sessions.push(entry);showReport(entry);delete S.running}else {$('#report').hidden=true;S.running={key:prefix(),start:Date.now(),before:Object.keys(S.log).filter(k=>S.log[k]?.d)};}save();tick()};$('#restStart').onclick=()=>startRest(restSecs);$('#restStop').onclick=()=>{restEnd=0;tick()};$('#reset').onclick=()=>{if(confirm('Alle Einträge dieses Tages löschen?')){Object.keys(S.log).filter(k=>k.startsWith(prefix()+'|')).forEach(k=>delete S.log[k]);save();render()}};function maxes(){$('#maxes').innerHTML=[['bp','Bankdrücken'],['pp','Push Press']].map(([k,n])=>`<label class="set"><span>${n}</span><input class="rm" data-m="${k}" inputmode="decimal" value="${esc(S.mx[k])}" placeholder="kg"></label>`).join('')}$('#export').onclick=()=>{const a=document.createElement('a'),u=URL.createObjectURL(new Blob([JSON.stringify(S,null,2)],{type:'application/json'}));a.href=u;a.download='rb-training-backup.json';a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)};$('#import').onclick=()=>$('#file').click();$('#file').onchange=async e=>{try{const o=JSON.parse(await e.target.files[0].text());if(!valid(o))throw Error();if(confirm('Lokale Daten durch Backup ersetzen?')){load(o);save();maxes();render()}}catch(e){alert('Backup konnte nicht gelesen werden.')}finally{$('#file').value=''}};maxes();render();
-function measure(r,seconds){const [w,d]=r.key.split('|').map(Number);let sets=0,reps=0,volume=0;D[d].e.forEach((x,i)=>{for(let j=0;j<x[1];j++){const k=key(w,d,i,j),v=rd(k);if(!v.d|| (r.before?.includes(k)&&!(v.completedAt>=r.start)))continue;sets++;const n=num(v.r),kg=num(v.w);if(!/Sek|sec|\bm\b/i.test(x[2])&&n>0&&Number.isFinite(n)){reps+=n;if(kg>0&&Number.isFinite(kg))volume+=kg*n;}}});return {sets,reps,volume,mass:Number(S.mass)||102,met:3.5};}
-let reportEntry;function showReport(entry){reportEntry=entry;const q=entry.report;const el=$('#report');el.hidden=false;el.innerHTML=`<div class="eyebrow">POST GAME / WORKOUT REPORT</div><h2>Training abgeschlossen</h2><strong id="kcal"></strong><p class="muted" id="range"></p><p>${fmt(entry.seconds)} min · ${q.sets} Sätze · ${q.reps} erfasste Wdh. · ${Math.round(q.volume).toLocaleString('de-DE')} kg protokollierte Last</p><label>Intensität inkl. Pausen<select id="met"><option value="3.5">Normal – Krafttraining (3,5 MET)</option><option value="5">Anstrengend (5 MET)</option><option value="6">Sehr intensiv (6 MET)</option></select></label><p class="muted">Aktive kcal = (MET − 1) × 3,5 × kg / 200 × Minuten. Schätzung, keine Messung. Last und Wiederholungen dienen der Einordnung; keine direkte Umrechnung. Einseitige Übungen und Hantelpaar als tatsächlich eingegebene Gesamtwerte erfassen.</p><textarea id="yazio" readonly></textarea><div class="flex"><button class="primary" id="copyKcal">kcal kopieren</button><button id="copyReport">Bericht kopieren</button></div><p id="copyStatus" role="status"></p>`;$('#met').value=String(q.met);const update=()=>{q.met=Number($('#met').value);const f=m=>Math.round(Math.max(0,m-1)*3.5*q.mass/200*entry.seconds/60);q.kcal=f(q.met);$('#kcal').textContent='≈ '+q.kcal+' kcal aktiv';$('#range').textContent='Orientierung: '+f(3.5)+'–'+f(6)+' kcal bei normaler bis sehr hoher Intensität';$('#yazio').value=`Krafttraining | ${Math.round(entry.seconds/60)} Min. | ${q.kcal} aktive kcal (geschätzt) | ${q.sets} Sätze | ${q.reps} Wdh. | ${Math.round(q.volume)} kg Last`;save()};$('#met').onchange=update;update();const copy=async value=>{try{await navigator.clipboard.writeText(value);$('#copyStatus').textContent='Kopiert – in YAZIO manuell eintragen.'}catch(e){$('#yazio').focus();$('#yazio').select();$('#copyStatus').textContent='Bitte markierten Bericht manuell kopieren.'}};$('#copyKcal').onclick=()=>copy(String(q.kcal));$('#copyReport').onclick=()=>copy($('#yazio').value);el.scrollIntoView({behavior:'smooth',block:'center'});}
-$('#bodyMass').value=S.mass||102;$('#bodyMass').onchange=()=>{const n=Number($('#bodyMass').value);if(n>=30&&n<=300){S.mass=n;save()}else $('#bodyMass').value=S.mass||102};document.addEventListener('click',e=>{const b=e.target.closest('[data-report]');if(!b)return;const entry=S.sessions.find(x=>String(x.end)===b.dataset.report);if(entry){document.querySelector('[data-view="train"]').click();showReport(entry)}});
-</script></body></html>
+  <main>
+    <section id="home">
+      <div class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">PADERBORN DOLPHINS · OFF-SEASON</p>
+          <h1>Built for the next play.</h1>
+          <p>Stärke, Explosivität und Athletik für deine nächste Saison.</p>
+          <button class="primary hero-action" data-view="train" id="openWorkout">Training öffnen</button>
+        </div>
+        <img class="hero-ball" src="gridiron-preview.jpg" alt="Goldener American Football">
+      </div>
+
+      <div class="dashboard-grid">
+        <article class="card next-card">
+          <p class="card-kicker">Aktueller Plan</p>
+          <h2 id="homeDay">Lower Strength</h2>
+          <p id="homeStatus">Woche 1 · Montag</p>
+          <div class="progress-track" aria-hidden="true"><i id="homeProgressBar"></i></div>
+          <p class="progress-copy" id="homeProgressText">0 von 0 Einträgen erledigt</p>
+        </article>
+        <article class="card metric-card">
+          <p class="card-kicker">Trainingsverlauf</p>
+          <strong id="homeSessions">0</strong>
+          <span>abgeschlossene Sessions</span>
+        </article>
+        <article class="card metric-card">
+          <p class="card-kicker">Protokollierte Last</p>
+          <strong id="homeVolume">0 kg</strong>
+          <span>in der aktuellen Woche</span>
+        </article>
+      </div>
+
+      <article class="card game-plan">
+        <div>
+          <p class="card-kicker">Dein Game Plan</p>
+          <h2>Vier Einheiten. Eine klare Linie.</h2>
+        </div>
+        <p>Trainiere mit zwei bis drei Wiederholungen Reserve. Steigere das Gewicht erst, wenn alle Sätze technisch sauber gelingen.</p>
+      </article>
+    </section>
+
+    <section id="train" hidden>
+      <div class="section-heading">
+        <div><p class="eyebrow">TRAINING</p><h1>Dein Workout</h1></div>
+        <span class="status-pill" id="activeSessionStatus">Bereit</span>
+      </div>
+
+      <div class="week-picker card" id="weeks"></div>
+      <p id="hint" class="hint"></p>
+      <div class="day-tabs" id="days"></div>
+
+      <article class="card session-card">
+        <div class="session-ring" id="sessionRing">
+          <div><span>Session</span><strong id="sessionTime">0:00</strong></div>
+        </div>
+        <div class="session-copy">
+          <p class="card-kicker">Heute</p>
+          <h2 id="dayname"></h2>
+          <p id="progressText">0 / 0 erledigt</p>
+          <div class="progress-track" aria-hidden="true"><i id="progressBar"></i></div>
+          <div class="session-actions">
+            <button id="session" class="primary">Training starten</button>
+            <button id="quickRest">90 s Pause</button>
+          </div>
+        </div>
+      </article>
+
+      <section id="report" class="card report-card" hidden aria-live="polite"></section>
+      <div id="work"></div>
+      <button id="reset" class="danger-button">Diesen Trainingstag zurücksetzen</button>
+    </section>
+
+    <section id="history" hidden>
+      <div class="section-heading"><div><p class="eyebrow">VERLAUF</p><h1>Deine Leistung</h1></div></div>
+      <div id="historyContent"></div>
+    </section>
+
+    <section id="settings" hidden>
+      <div class="section-heading"><div><p class="eyebrow">EINSTELLUNGEN</p><h1>Deine App</h1></div></div>
+
+      <article class="card settings-card">
+        <div><h2>Ton &amp; Ansagen</h2><p>Signalton und deutsche Sprachansagen für Training und Satzpausen.</p></div>
+        <label class="switch-row"><span>Ton aktiv</span><input id="soundEnabled" type="checkbox" role="switch" checked></label>
+        <button id="soundTest">Ton testen</button>
+        <p class="setting-status" id="soundStatus" role="status"></p>
+      </article>
+
+      <article class="card settings-card">
+        <div><h2>Körpergewicht</h2><p>Wird für die Kalorienschätzung im YAZIO-Bericht verwendet.</p></div>
+        <label class="input-row"><span>Aktuelles Gewicht</span><span><input id="bodyMass" type="number" min="30" max="300" step="0.1" value="102"> kg</span></label>
+      </article>
+
+      <article class="card settings-card">
+        <div><h2>Referenzgewichte</h2><p>Optionales 1RM für automatische Gewichtsvorschläge. Ein Maximaltest ist nicht nötig.</p></div>
+        <div id="maxes"></div>
+      </article>
+
+      <article class="card settings-card">
+        <div><h2>Datensicherung</h2><p>Deine Daten bleiben auf diesem Gerät. Exportiere ein Backup für den Gerätewechsel.</p></div>
+        <div class="button-row"><button id="export">Backup exportieren</button><button id="import">Backup importieren</button></div>
+        <input type="file" id="file" accept="application/json,.json" hidden>
+        <p id="storageStatus" role="status"></p>
+      </article>
+    </section>
+  </main>
+
+  <aside class="rest-dock" id="restDock" aria-live="polite" hidden>
+    <div class="rest-dial"><span id="restLabel">Satzpause</span><strong id="restTime">0:00</strong></div>
+    <button id="restStop">Stopp</button>
+    <button id="restStart" class="primary">90 s Pause</button>
+  </aside>
+
+  <nav class="bottom-nav" aria-label="Hauptnavigation">
+    <button data-view="home" class="active"><span aria-hidden="true">⌂</span>Start</button>
+    <button data-view="train"><span aria-hidden="true">◆</span>Training</button>
+    <button data-view="history"><span aria-hidden="true">▥</span>Verlauf</button>
+    <button data-view="settings"><span aria-hidden="true">⚙</span>Setup</button>
+  </nav>
+</body>
+</html>

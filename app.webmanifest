@@ -1,0 +1,18 @@
+{
+  "name": "GRIDIRON Football Training",
+  "short_name": "GRIDIRON",
+  "description": "Off-Season-Trainingsplan für Running Backs",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0c0d0f",
+  "theme_color": "#0c0d0f",
+  "lang": "de",
+  "icons": [
+    {
+      "src": "gridiron-preview.jpg",
+      "sizes": "640x640",
+      "type": "image/jpeg",
+      "purpose": "any"
+    }
+  ]
+}
