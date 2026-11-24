@@ -1,4 +1,4 @@
-const CACHE = 'gridiron-v5';
+const CACHE = 'gridiron-v5-report-fix';
 const ASSETS = ['./', './index.html', './style.css', './data.js', './app.js', './app.webmanifest', './gridiron-preview.jpg'];
 
 self.addEventListener('install', event => {
