@@ -264,6 +264,12 @@ function setView(nextView) {
 function unlockAudio() {
   if (!S.sound) return;
   try {
+    // Ambient audio can mix with music from another app on iOS.
+    if (navigator.audioSession) navigator.audioSession.type = 'ambient';
+  } catch {
+    // Audio Session support varies by browser.
+  }
+  try {
     audioContext ??= new (window.AudioContext || window.webkitAudioContext)();
     void audioContext.resume().catch(() => {});
   } catch {
