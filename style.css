@@ -64,8 +64,9 @@ main { padding-top: .5rem; padding-bottom: calc(12.5rem + env(safe-area-inset-bo
 .hint { margin: .8rem 0 1rem; }
 .week-picker { display: grid; grid-template-columns: 1fr 1.2fr 1fr; gap: .5rem; }
 .week-picker #deload { grid-column: 1 / -1; }
-.day-tabs { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem; margin: 1rem 0; }
-.day-tabs button small { display: block; margin-top: .15rem; font-size: .7rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.day-tabs { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .5rem; margin: 1rem 0; }
+.day-tabs button small { display: block; margin-top: .15rem; font-size: .875rem; }
+.day-tabs button.active small { color: inherit; }
 
 button, .button-link, select { min-height: 46px; border: 1px solid var(--line); border-radius: 13px; padding: .7rem .9rem; background: #24262b; color: var(--text); }
 button:hover { border-color: #5b5548; }
@@ -105,6 +106,10 @@ button.active, button.primary, .primary { border-color: var(--gold); background:
 .set input:not([type="checkbox"]), input.rm, #bodyMass, select, textarea { width: 100%; min-width: 0; border: 1px solid var(--line); border-radius: 11px; background: #0f1013; color: var(--text); padding: .72rem; }
 .set input:not([type="checkbox"]) { text-align: center; }
 .set input[type="checkbox"] { width: 22px; height: 22px; accent-color: var(--gold); vertical-align: middle; }
+#work .set small { font-size: .875rem; line-height: 1.25; }
+#work .set > label { display: flex; align-items: center; gap: .3rem; min-height: 44px; white-space: nowrap; }
+#work .set input[type="checkbox"] { flex-shrink: 0; margin: 0; }
+#work .set input:not([type="checkbox"]) { min-height: 48px; padding-inline: .3rem; font-size: 1.125rem; }
 
 .grid { display: grid; grid-template-columns: 1fr 1fr; gap: .85rem; }
 .grid .panel { margin: 0; }
@@ -155,8 +160,8 @@ textarea { min-height: 92px; resize: vertical; }
   .session-actions { grid-template-columns: 1fr; }
   .warm { grid-template-columns: 28px minmax(0,1fr); }
   .warm .technique-link { grid-column: 2; justify-self: start; }
-  .set { grid-template-columns: 72px 1fr 1fr; }
-  .set small { font-size: .72rem; }
+  .day-tabs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .set { grid-template-columns: 72px minmax(0, 1fr) minmax(0, 1.25fr); }
   .report-stats { grid-template-columns: 1fr 1fr; }
   .rest-dock { grid-template-columns: 1fr auto; }
   #restStart { grid-column: 1 / -1; }
